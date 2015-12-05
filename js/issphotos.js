@@ -1,5 +1,21 @@
 $(document).ready(function() {
 
+
+  $(".btn").on("click", function(){
+    var userLocation = $("#location").val().trim();
+    var googleApiURL = "https://maps.googleapis.com/maps/api/geocode/json?";
+    googleApiURL += "key=AIzaSyCuJleuoSrg7Q8ZFUBEogGFre0viUTqj4E";
+    googleApiURL += "&address=" + userLocation;
+
+    $.ajax({
+      type: "GET",
+      url: googleApiURL,
+      success: function(mapsdata){
+        var geoLocation = mapsdata.results[0].geometry.location;
+      }
+    });
+  });
+
 // OPEN NOTIFY - ISS LOCATION API
 function issLocator(){
   $.ajax({
