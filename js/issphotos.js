@@ -12,18 +12,17 @@ $(document).ready(function() {
       url: googleApiURL,
       success: function(mapsdata){
         var geoLocation = mapsdata.results[0].geometry.location;
+        issLocator(geoLocation);
       }
     });
   });
 
 // OPEN NOTIFY - ISS LOCATION API
-function issLocator(){
+function issLocator(location){
   $.ajax({
-    // TODO pass LAT and LON data to url to get current location
-    url: 'http://api.open-notify.org/iss-pass.json?lat=LAT&lon=LON',
+    url: 'http://api.open-notify.org/iss-pass.json?lat='+location.lat+'&lon='+location.lng,
     type: 'GET',
-    dataType: 'json',
-    // TODO manipulate data on success.
+    success: 
   });
 }
 
